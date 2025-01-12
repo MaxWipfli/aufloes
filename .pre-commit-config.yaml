@@ -1,0 +1,41 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.10.0
+    hooks:
+      - id: yamlfmt
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: v0.13.0
+    hooks:
+      - id: markdownlint
+        args: ["--style", ".mdl_style.rb"]
+  - repo: local
+    hooks:
+      - id: cargo-check
+        name: Check Rust sources for errors with cargo check.
+        entry: cargo check
+        language: system
+        types: [file, rust]
+        pass_filenames: false
+      - id: cargo-clippy
+        name: Lint Rust sources with cargo clippy.
+        entry: cargo clippy -- --deny warnings --allow clippy::module_inception
+        language: system
+        types: [file, rust]
+        pass_filenames: false
+      - id: cargo-fmt
+        name: Format Rust sources with cargo fmt.
+        entry: cargo fmt
+        language: system
+        types: [file, rust]
+        args: ["--"]
+      - id: cargo-test
+        name: Test Rust sources with cargo test.
+        entry: cargo test
+        language: system
+        pass_filenames: false
