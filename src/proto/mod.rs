@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2025 Max Wipfli <mail@maxwipfli.ch>
+
 /// Extracts the transaction ID from a message encoded in DNS wire format.
 pub fn txid_from_binary_message(message: &[u8]) -> u16 {
     let mut txid = [0u8; 2];
