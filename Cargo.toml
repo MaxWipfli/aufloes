@@ -1,0 +1,18 @@
+[package]
+name = "aufloes"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = "0.1.85"
+bytes = "1.9.0"
+clap = { version = "4.5.26", features = ["derive"] }
+eyre = "0.6.12"
+rand = "0.8.5"
+reqwest = "0.12.12"
+tokio = { version = "1.43.0", features = ["full"] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+
+[dev-dependencies]
+hickory-proto = "0.24.2"
